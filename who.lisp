@@ -440,7 +440,8 @@ into Lisp code which creates the corresponding HTML as a string."
                                &body body)
   "Show the macro expansion of WITH-HTML-OUTPUT."
   (when (and *indent*
-             (not (integerp *indent*)))
+             (or (not (integerp *indent*))
+                 (not (plusp *indent*))))
     (setq *indent* 0))
   (when (eq prologue t)
     (setq prologue *prologue*))
