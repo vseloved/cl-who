@@ -25,7 +25,7 @@
 ;;; SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 (asdf:defsystem :cl-who
-  :version "0.11.X"
+  :version "0.11.X.1"
   :description "Forked version of HTML generator with support for macro ~
 definition"
   :serial t

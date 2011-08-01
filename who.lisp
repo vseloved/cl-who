@@ -224,7 +224,7 @@ forms."
             ;; do the same things as above but at runtime
             nconc (list `(let ((,=var= ,val))
                           (cond ((null ,=var=))
-                                ((eq ,=var= t) 
+                                ((eq ,=var= t)
                                  ,(case *html-mode*
                                    (:sgml
                                     `(htm ,(format nil " ~A" attr)))
@@ -413,8 +413,8 @@ into Lisp code to write the corresponding HTML as strings to VAR -
 which should either hold a stream or which'll be bound to STREAM if
 supplied."
   (when (and *indent*
-             (not (integerp *indent*))
-             (not (plusp *indent*)))
+             (or (not (integerp *indent*))
+                 (not (plusp *indent*))))
     (setq *indent* 0))
   (when (eql prologue t)
     (setq prologue *prologue*))
@@ -486,7 +486,7 @@ multiple evaluation of macro arguments (frequently encountered) etc."
   (tree-to-commands rest '*who-stream*))
 
 (def-internal-macro str (form &rest rest)
-  "Defines macroexpansion for STR special form."  
+  "Defines macroexpansion for STR special form."
   (declare (ignore rest))
   (let ((result (gensym)))
     `(let ((,result ,form))
